@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+  }
+  
+  .vertical-center {
+    margin: 40px;
+    position: absolute;
+  }
+
+.details {
+    padding-right: 50px;
+}
+
+  .container-div {
+    display: flex ;
+  }
