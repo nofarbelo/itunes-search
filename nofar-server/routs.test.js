@@ -17,10 +17,7 @@ describe('Post Endpoints', () => {
 describe('Get Endpoints', () => {
   it('should create a new get', async () => {
     const res = await request('http://localhost:9000')
-      .get('/api/popular/:id')
-      .send({
-          id: 5
-      })
+      .get('/api/popular/5')
     expect(res.statusCode).toEqual(200)
     expect(res.body.length).toEqual(10)
   })
