@@ -1,13 +1,10 @@
 const SearchQuery = require('../models/search-query-model')
 
-
-
 updatOrCreateeSearchQuery = async (req, res) => {
-console.log(req.body)
     SearchQuery.findOne({name: req.body.payload }, (err, searchQuery) => {
         let currentQuery;
         if (!searchQuery) {
-            currentQuery = new SearchQuery({name: req.body.payload, count: 0});
+            currentQuery = new SearchQuery({name: req.body.payload, count: 1});
         } else {
             currentQuery = searchQuery;
             currentQuery.count += 1;
@@ -33,11 +30,11 @@ console.log(req.body)
 
 
 getPopularSearchQuery = async (req, res) => {
-    const limit = 10
+    const LIMIT = 10
+    console.log(req.params)
     
-    let searchResult = await SearchQuery.find().sort({count: -1}).limit(limit).exec((err, searchQueries) => {
+    await SearchQuery.find().sort({count: -1}).limit(LIMIT).select({"name":1, "_id":0}).exec((err, searchQueries) => {
         if (err) {
-
             return res.status(400).json({ success: false, error: err })
         }
         if (!searchQueries.length) {

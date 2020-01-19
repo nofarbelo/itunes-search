@@ -7,6 +7,6 @@ const router = express.Router()
 
 
 router.post('/query', SearchQueryCtrl.updatOrCreateeSearchQuery)
-router.get('/popular', SearchQueryCtrl.getPopularSearchQuery)
+router.get('/popular/:id', SearchQueryCtrl.getPopularSearchQuery)
 
 module.exports = router

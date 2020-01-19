@@ -9,12 +9,12 @@ export default class Main extends Component {
         super(props);
 
         this.state = {
-            data: [],
+            data: null,
             top: []
         }
     }
 
-    Search = async (searchValue) => {
+    search = async (searchValue) => {
 
         const limit = 25;
         const itunesURL = `https://itunes.apple.com/search?term=${searchValue.split(' ').join('+')}&limit=${limit}`
@@ -24,7 +24,8 @@ export default class Main extends Component {
         this.setState({data: json.results, top: []});
     }
 
-    setTop = (top) =>{ 
+    setTop = (top) => { 
+        console.log(top)
         this.setState({top});
     }
 
@@ -32,7 +33,7 @@ export default class Main extends Component {
         const { data, top } = this.state;
         return (
             <div>
-                <SearchForm setTop={this.setTop} Search={this.Search}/>
+                <SearchForm setTop={this.setTop} search={this.search}/>
                 {top.length === 0 ?  (
                     <div> 
                         <Results data={data} />

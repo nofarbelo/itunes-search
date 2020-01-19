@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List'
+import NoResults from './NoResults'
 
 class Results extends React.PureComponent {
 
@@ -8,9 +9,13 @@ class Results extends React.PureComponent {
     }   
 
     render() {
+        const { data } = this.props;
+        if (!data) {
+            return ""
+        }
         return (
             <div>
-                {this.props.data.length > 0 ? <List results={this.props.data}/> : ""}
+                {data.length > 0 ? <List results={data}/> : <NoResults/>}
             </div>
         )
     }

@@ -1,8 +1,11 @@
 import React from 'react'
+import '../styles/NoResults.css'
 
 const Top = ({data}) => {
     return (
-        data.map((search, index) => <div key={index} > {search.name} </div>)
+        <div className="topDiv">
+        {data.map((search, index) => <div key={index} > {search.name} </div>)}
+        </div>
     )
 }
 

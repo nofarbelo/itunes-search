@@ -1,12 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const { port } = require('./config')
 
 const db = require('./server/db')
 const searchQueryRouter = require('./server/routes/search-query-router')
+const usersRouter = require('./server/routes/users-router')
 
 const app = express()
-const apiPort = 9000
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
@@ -19,5 +20,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api', searchQueryRouter)
+app.use('/user', usersRouter)
 
-app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
+app.listen(port, () => console.log(`Server running on port ${port}`))

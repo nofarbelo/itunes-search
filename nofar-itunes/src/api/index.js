@@ -4,8 +4,8 @@ const api = axios.create({
     baseURL: 'http://localhost:9000/api',
 })
 
-export const insertSearchQuery = payload => api.post(`/query`, {payload})
-export const getPopularSearchQuery = () => api.get(`/popular`)
+const insertSearchQuery = payload => api.post(`/query`, {payload})
+const getPopularSearchQuery = id => api.get(`/popular/${id}`)
 
 const apis = {
     insertSearchQuery,
