@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "both": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "debug": "node index.js"
+    "debug": "node index.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +18,15 @@
     "express": "^4.17.1",
     "mongoose": "^5.8.4",
     "morgan": "^1.9.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "supertest": "^4.0.2"
   }
 }
